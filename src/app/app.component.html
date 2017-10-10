@@ -1,16 +1,27 @@
-<!--<md-toolbar color = "primary">{{ title }}</md-toolbar>-->
+<md-toolbar color = "primary">{{ title }}</md-toolbar>
 
 
+<div id = "entire-grid">
+    
+    <div id="left-column">
+        <form>
+            <md-form-field class = "searchBar">
+                <input [(ngModel)]="actor" name ="bro" mdInput placeholder="Search for an actor"
+                #box (keyup.enter)="search(box.value)">
+            </md-form-field>
+        </form>
+        
+    </div>
+    
+    <div id="center">
+        <md-card class = "movie-info" *ngFor= "let result of searchResult" (click) = "addFavActor(result)"> {{result.results[0].name}}  {{result.results[0].known_for[0].title}} </md-card>
+    </div>
+    
+    <div id="right">
+        <!-- anywhere in the code below  replace result with actor. we are assigning the variable actor in the ngFor code then we can use it in any childern elements--> 
+        <md-card class = "fav-info" *ngFor= "let actor of favActor" (click) = "removeFavActor(actor)"> {{actor.results[0].name}}  {{actor.results[0].known_for[0].title}} </md-card>
+    </div>
+</div>
+    
 
 
-<!--The content below is only a placeholder and can be replaced.-->
-<!--<div id="whole-grid">-->
-<!--      <div id="left-col">-->
-<!--          <form class="example-form">-->
-<!--            <md-form-field class="searchBar">-->
-<!--            <input [(ngModel)]= "actor" name ="bro" mdInput placeholder="Search for an actor" -->
-<!--             #box (keyup.enter)="search(box.value)">-->
-<!--            </md-form-field>-->
-<!--          </form>-->
-<!--        </div>-->
-<!--</div>-->

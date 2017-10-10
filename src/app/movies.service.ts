@@ -6,23 +6,20 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class MoviesService {
      apikey: string = "a93f51f3c07b58f12672d17eed97a8fa";
-     url: string = "https://api.themoviedb.org/3/movie/550?api_key=a93f51f3c07b58f12672d17eed97a8fa&query=";
+     url: string = "https://api.themoviedb.org/3/search/person?api_key=a93f51f3c07b58f12672d17eed97a8fa&language=en-US&query=";
 
-//   constructor() { }
-
-// }
-
+    postUrl: string = "http://stephanie-fall-2017-phortonssf.c9users.io:8080/api/actors";
+    
 constructor( public http: Http) { }
      
- getData(){
-    return this.http.get(this.url )
+ getData(end){
+    return this.http.get(this.url + end)
     .map(res => res.json())
   } 
  
-}
-// postData() {
-//     return this.http.post("https://stephanie-fall-2017-phortonssf.c9users.io:8081/hello", {"number": 12})
-//     .map(res => res.json())
-  
-//  }
-// }
+
+postData(actorName, movie) {
+    return this.http.post(this.postUrl, {name: actorName, known_for: movie})
+    .map(res => res.json())
+ }
+};

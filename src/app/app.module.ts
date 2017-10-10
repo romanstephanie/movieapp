@@ -5,7 +5,8 @@ import {FormsModule,
 import { NgModule } from '@angular/core';
 import {MdToolbarModule, 
         MdCardModule, 
-        MdInputModule} from '@angular/material';
+        MdInputModule
+} from '@angular/material';
 import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
